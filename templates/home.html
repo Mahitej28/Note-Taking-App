@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <title>Document</title>
+    <title>Notefy</title>
 </head>
 <body>
     <div class="container">
+        <div class="heading">
+            <h1>✍️ Notefy</h1>
+            <h3 style="margin: 10px;"><i>All your notes at one place..!!</i></h3>
+        </div>
         <div class="top">
-        <h1>✍️ Note App</h1>
             <form method="POST" action="/">
                 <input type="text" name="note" placeholder="Enter a note"> 
                 <input type="hidden" name="action" value="add"> 
@@ -20,17 +23,19 @@
         <div class="todo">
             {% for index, note in notes %}
             <div class="text">
-                {{ note }}
+                    <h3>{{ note }}</h3> 
+            </div>
+            <div class="buttons">
+                <form method="POST" action="/edit">
+                    <input type="hidden" name="action" value="edit">
+                    <input type="hidden" name="note_index" value="{{ index }}">
+                    <input type="text" name="new_note" placeholder="Edit Your note">
+                    <button type="submit">Edit</button>
+                </form>
                 <form method="POST" action="/delete">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" name="note_index" value="{{ index }}">
                     <button type="submit">Delete</button>
-                </form>
-                <form method="POST" action="/edit">
-                    <input type="hidden" name="action" value="edit">
-                    <input type="hidden" name="note_index" value="{{ index }}">
-                    <input type="text" name="new_note" placeholder="New note">
-                    <button type="submit">Edit</button>
                 </form>
             </div>
             {% endfor %}

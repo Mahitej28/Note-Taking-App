@@ -1,17 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
+app.static_folder = 'static'
 
 notes = []
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-    if request.method == "POST":
-         note = request.form.get("note")
-         notes.append(note)
-         return redirect(url_for('index'))
-    indexed_notes = list(enumerate(notes))
-    return render_template("home.html", notes= indexed_notes)
+        if request.method == "POST":
+            note = request.form.get("note")
+            if note: 
+                notes.append(note)
+            return redirect(url_for('index'))
+        indexed_notes = list(enumerate(notes))
+        return render_template("home.html", notes= indexed_notes)
 
 @app.route('/edit', methods=["GET","POST"])
 def edit_note():

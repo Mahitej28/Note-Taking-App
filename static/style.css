@@ -11,17 +11,25 @@ h1{
     color: rgb(243, 242, 239);
 }
 
+h3{
+  margin-top: 30px;
+  margin-left: 20px;
+  color: rgb(243, 242, 239);
+}
+
 .top{
     margin-top: 1rem;
-    display: flex;
     gap: 1.5rem;
-    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .container{
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
     padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
 
@@ -86,15 +94,18 @@ input {
 
 .todo{
     position: relative;
-    border-radius: 10px;
     outline: 3px solid #d29505;
     outline-offset: 3px;
     margin-top: 1rem;
     color: white;
-    padding: 1.5rem 3rem;
     border-radius: 5px;
     box-shadow: rgba(252, 180, 65, 0.2) 0 15px 30px -5px;
     background-color: #140f01;
+    padding: 1.5rem 3rem;
   }
 
-  
+  .buttons form{
+
+    display: inline;
+    margin: 10px;
+  }
