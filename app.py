@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
-
+app.static_folder = 'static'
 notes = []
 
 @app.route('/', methods=["GET", "POST"])

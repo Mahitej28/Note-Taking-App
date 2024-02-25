@@ -4,32 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action="/">
-        <input type="text" name="note" placeholder="Enter a note"> <!-- Changed name attribute to "note" -->
-        <input type="hidden" name="action" value="add"> <!-- Added hidden input for action -->
-        <button type="submit">Add Note</button>
-    </form>
-
-    <ul>
-    {% for index, note in notes %}
-    <li>
-        {{ note }}
-        <form method="POST" action="/delete">
-            <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="note_index" value="{{ index }}">
-            <button type="submit">Delete</button>
-        </form>
-        <form method="POST" action="/edit">
-            <input type="hidden" name="action" value="edit">
-            <input type="hidden" name="note_index" value="{{ index }}">
-            <input type="text" name="new_note" placeholder="New note">
-            <button type="submit">Edit</button>
-        </form>
-    </li>
-    {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="top">
+        <h1>✍️ Note App</h1>
+            <form method="POST" action="/">
+                <input type="text" name="note" placeholder="Enter a note"> 
+                <input type="hidden" name="action" value="add"> 
+                <button type="submit">Add Note</button>
+            </form>
+        </div>
+        <div class="todo">
+            {% for index, note in notes %}
+            <div class="text">
+                {{ note }}
+                <form method="POST" action="/delete">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="note_index" value="{{ index }}">
+                    <button type="submit">Delete</button>
+                </form>
+                <form method="POST" action="/edit">
+                    <input type="hidden" name="action" value="edit">
+                    <input type="hidden" name="note_index" value="{{ index }}">
+                    <input type="text" name="new_note" placeholder="New note">
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
